@@ -1,0 +1,32 @@
+SELECT * FROM dojos;
+INSERT INTO dojos (name, created_at,updated_at) VALUES ('Seattle Dojo',NOW(),NOW());
+SELECT * FROM dojos;
+INSERT INTO dojos (name, created_at, updated_at) 
+VALUES ('San Jose Dojo',NOW(),NOW()), ('Texas Dojo',NOW(),NOW());
+SELECT * FROM dojos;
+DELETE FROM dojos WHERE id BETWEEN 1 AND 3;
+SELECT * FROM dojos;
+INSERT INTO dojos (name, created_at, updated_at) 
+VALUES 
+('San Franscico Dojo',NOW(),NOW()),
+('New York Dojo',NOW(),NOW()),
+('Phoenix Dojo',NOW(),NOW());
+SELECT * FROM dojos;
+
+SELECT * FROM dojos_and_ninjas_schema.ninjas;
+INSERT INTO ninjas (first_name,last_name,created_at,updated_at,dojos_id) VALUES
+('Katy','Perry',NOW(),NOW(),4);
+INSERT INTO ninjas (first_name,last_name,created_at,updated_at,dojos_id) VALUES
+('Steve','Austin',NOW(),NOW(),4),
+('Austin','Powers',NOW(),NOW(),4),
+('Michael','Meyers',NOW(),NOW(),5),
+('Frank','Reynolds',NOW(),NOW(),5),
+('Sandra','Bullock',NOW(),NOW(),5),
+('Jim','Davis',NOW(),NOW(),6),
+('James','May',NOW(),NOW(),6),
+('Richard','Hammond',NOW(),NOW(),6);
+SELECT * FROM ninjas;
+SELECT * FROM ninjas WHERE dojos_id = 4;
+SELECT * FROM ninjas WHERE dojos_id = 6;
+SELECT dojos_id FROM ninjas ORDER BY id DESC LIMIT 1;
+SELECT * FROM dojos_and_ninjas_schema.dojos WHERE id = (SELECT dojos_id FROM ninjas ORDER BY id DESC LIMIT 1);
